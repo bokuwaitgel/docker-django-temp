@@ -10,13 +10,13 @@ services:
     env_file:
       - '.env'
     ports:
-      - "8000:8000"
+      - "8081:8081"
   nginx:
     build: ./nginx
     volumes:
       - 'static:/app/static'
     ports:
-      - 80:80
+      - 8000:80
     depends_on:
       - backend
 
