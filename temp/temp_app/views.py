@@ -14,3 +14,9 @@ class TodoView(APIView):
     def get(self, request):
         todos = Todo.objects.all()
         return Response([{'task': todo.task, 'completed': todo.completed} for todo in todos])
+    
+    #delete method
+    def delete(self, request):
+        task = request.data.get('task')
+        Todo.objects.filter(task=task).delete()
+        return Response(200)
